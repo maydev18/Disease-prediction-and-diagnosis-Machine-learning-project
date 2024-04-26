@@ -16,7 +16,7 @@ medication = pd.read_csv("datasets/medications.csv")
 diets = pd.read_csv("datasets/diets.csv")
 
 #loading the model
-KNN = pickle.load(open("models/knn.pkl",'rb'))
+KNN = pickle.load(open("models/KNN.pkl",'rb'))
 
 def helper(dis):
     desc = description[description['Disease'] == dis]['Description']
