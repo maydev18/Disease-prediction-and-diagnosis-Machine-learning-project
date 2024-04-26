@@ -1,7 +1,10 @@
-from flask import Flask , request , render_template
+import json
+
+from flask import Flask , request , render_template , jsonify , make_response
 import pandas as pd
 import numpy as np
 import pickle
+import ast
 app = Flask(__name__)
 
 #loading the database
@@ -48,31 +51,43 @@ def get_predicted_value(patient_symptoms):
 @app.route('/')
 def index():
     return render_template('index.html')
-@app.route('/predict' , methods = ['POST' , 'GET'])
+@app.route('/predict' , methods = ['POST'])
 def predict():
-    if request.method == 'POST':
-        symptoms = request.form.get('symptoms')
-        user_symptoms = [s.strip() for s in symptoms.split(',')]
-        predicted_disease = get_predicted_value(user_symptoms)
-        desc, pre, med, die, wrkout = helper(predicted_disease)
-        return render_template('index.html' , predicted_disease = predicted_disease , desc = desc , med = med , die = die , wrkout = wrkout , pre = pre)
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
-
-@app.route('/blog')
-def blog():
-    return render_template('blog.html')
-
-
-@app.route('/developer')
-def developer():
-    return render_template('developer.html')
+    json_data = request.json
+    symptoms = []
+    if("symptoms" in json_data):
+        symptoms = json_data["symptoms"]
+        symptoms = ast.literal_eval(symptoms)
+    else:
+        return jsonify({'error': 'Symptoms key is missing from JSON data'}), 400
+    predicted_disease = get_predicted_value(symptoms)
+    desc, pre, med, die, wrkout = helper(predicted_disease)
+    pre = pre[0]
+    med = med[0]
+    die = die[0]
+    tmp = []
+    med = ast.literal_eval(med)
+    die = ast.literal_eval(die)
+    for i in wrkout:
+        tmp.append(i)
+    wrkout = tmp
+    tmp = []
+    for i in pre:
+        tmp.append(i)
+    pre = tmp
+    tmp = []
+    data = {
+        "disease" : predicted_disease,
+        "description" : desc,
+        "precautions" : pre,
+        "medications" : med,
+        "diet" : die,
+        "workout" : wrkout
+    }
+    data = json.dumps(data)
+    response = make_response(data)
+    response.status_code = 200  # Set the status code
+    return response
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug = False , host='0.0.0.0')
