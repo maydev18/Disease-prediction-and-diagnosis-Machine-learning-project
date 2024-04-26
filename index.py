@@ -52,14 +52,12 @@ def get_predicted_value(patient_symptoms):
 @app.route('/predict' , methods = ['POST'])
 @cross_origin(supports_credentials=True)
 def predict():
-    symptoms = request.json
-    print(symptoms)
-    # if("symptoms" in json_data):
-    #     symptoms = json_data["symptoms"]
-
-    # else:
-    #     return jsonify({'error': 'Symptoms key is missing from JSON data'}), 400
-    symptoms = ast.literal_eval(symptoms)
+    json_data = request.json
+    symptoms = []
+    if("symptoms" in json_data):
+        symptoms = json_data["symptoms"]
+    else:
+        return jsonify({'error': 'Symptoms key is missing from JSON data'}), 400
     predicted_disease = get_predicted_value(symptoms)
     desc, pre, med, die, wrkout = helper(predicted_disease)
     pre = pre[0]
@@ -85,6 +83,7 @@ def predict():
         "workout" : wrkout
     }
     data = json.dumps(data)
+    print(type(data))
     response = make_response(data)
     response.status_code = 200  # Set the status code
     return response
