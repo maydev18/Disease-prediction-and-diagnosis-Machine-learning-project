@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disease Prediction Tool</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.my-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.checkbox-group {
+    margin-bottom: 20px;
+    display: grid;
+}
+
+.checkbox-group label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.checkbox-group label input {
+    margin-right: 10px;
+}
+
+.checkbox-group label:hover {
+    background-color: #f9f9f9;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+</style>
+</head>
+<body>
+
+<div class="my-container">
+    <h1>Disease Prediction Tool</h1>
+
+    <form id="symptom-form">
+        <div class="checkbox-group">
+            <div class = "symptoms box">
+                <h2>General Symptoms</h2>
+                <label><input type="checkbox" name="symptom" value="itching"> Itching</label>
+            <label><input type="checkbox" name="symptom" value="skin_rash"> Skin rash</label>
+            <label><input type="checkbox" name="symptom" value="nodal_skin_eruptions"> Nodal skin eruptions</label>
+            <label><input type="checkbox" name="symptom" value="continuous_sneezing"> Continuous sneezing</label>
+            <label><input type="checkbox" name="symptom" value="shivering"> Shivering</label>
+            <label><input type="checkbox" name="symptom" value="chills"> Chills</label>
+            <label><input type="checkbox" name="symptom" value="joint_pain"> Joint pain</label>
+            <label><input type="checkbox" name="symptom" value="stomach_pain"> Stomach pain</label>
+            <label><input type="checkbox" name="symptom" value="acidity"> Acidity</label>
+            <label><input type="checkbox" name="symptom" value="ulcers_on_tongue"> Ulcers on tongue</label>
+            <label><input type="checkbox" name="symptom" value="muscle_wasting"> Muscle wasting</label>
+            <label><input type="checkbox" name="symptom" value="vomiting"> Vomiting</label>
+            <label><input type="checkbox" name="symptom" value="burning_micturition"> Burning micturition</label>
+            <label><input type="checkbox" name="symptom" value="spotting_urination"> Spotting urination</label>
+            <label><input type="checkbox" name="symptom" value="fatigue"> Fatigue</label>
+            <label><input type="checkbox" name="symptom" value="weight_gain"> Weight gain</label>
+            <label><input type="checkbox" name="symptom" value="anxiety"> Anxiety</label>
+            <label><input type="checkbox" name="symptom" value="cold_hands_and_feets"> Cold hands and feet</label>
+            <label><input type="checkbox" name="symptom" value="mood_swings"> Mood swings</label>
+            <label><input type="checkbox" name="symptom" value="weight_loss"> Weight loss</label>
+            <label><input type="checkbox" name="symptom" value="restlessness"> Restlessness</label>
+            <label><input type="checkbox" name="symptom" value="lethargy"> Lethargy</label>
+            <label><input type="checkbox" name="symptom" value="patches_in_throat"> Patches in throat</label>
+            <label><input type="checkbox" name="symptom" value="irregular_sugar_level"> Irregular sugar level</label>
+            </div>
+           <div class = "symptoms box">
+                <h2>Respiratory Symptoms</h2>
+                <label><input type="checkbox" name="symptom" value="cough"> Cough</label>
+                <label><input type="checkbox" name="symptom" value="high_fever"> High fever</label>
+                <label><input type="checkbox" name="symptom" value="sunken_eyes"> Sunken eyes</label>
+                <label><input type="checkbox" name="symptom" value="breathlessness"> Breathlessness</label>
+                <label><input type="checkbox" name="symptom" value="sweating"> Sweating</label>
+                <label><input type="checkbox" name="symptom" value="dehydration"> Dehydration</label>
+                <label><input type="checkbox" name="symptom" value="indigestion"> Indigestion</label>
+                <label><input type="checkbox" name="symptom" value="headache"> Headache</label>
+                <label><input type="checkbox" name="symptom" value="yellowish_skin"> Yellowish skin</label>
+                <label><input type="checkbox" name="symptom" value="dark_urine"> Dark urine</label>
+                <label><input type="checkbox" name="symptom" value="nausea"> Nausea</label>
+                <label><input type="checkbox" name="symptom" value="loss_of_appetite"> Loss of appetite</label>
+           </div>
+            <div class = "symptoms-box">
+                <h2>Gastrointestinal Symptoms</h2>
+                <label><input type="checkbox" name="symptom" value="pain_behind_the_eyes"> Pain behind the eyes</label>
+                <label><input type="checkbox" name="symptom" value="back_pain"> Back pain</label>
+                <label><input type="checkbox" name="symptom" value="constipation"> Constipation</label>
+                <label><input type="checkbox" name="symptom" value="abdominal_pain"> Abdominal pain</label>
+                <label><input type="checkbox" name="symptom" value="diarrhoea"> Diarrhoea</label>
+                <label><input type="checkbox" name="symptom" value="mild_fever"> Mild fever</label>
+                <label><input type="checkbox" name="symptom" value="yellow_urine"> Yellow urine</label>
+                <label><input type="checkbox" name="symptom" value="yellowing_of_eyes"> Yellowing of eyes</label>
+                <label><input type="checkbox" name="symptom" value="acute_liver_failure"> Acute liver failure</label>
+                <label><input type="checkbox" name="symptom" value="fluid_overload"> Fluid overload</label>
+                <label><input type="checkbox" name="symptom" value="swelling_of_stomach"> Swelling of stomach</label>
+                <label><input type="checkbox" name="symptom" value="swelled_lymph_nodes"> Swelled lymph nodes</label>
+                <label><input type="checkbox" name="symptom" value="malaise"> Malaise</label>
+                <label><input type="checkbox" name="symptom" value="blurred_and_distorted_vision"> Blurred and distorted vision</label>
+                <label><input type="checkbox" name="symptom" value="phlegm"> Phlegm</label>
+                <label><input type="checkbox" name="symptom" value="throat_irritation"> Throat irritation</label>
+                <label><input type="checkbox" name="symptom" value="redness_of_eyes"> Redness of eyes</label>
+                <label><input type="checkbox" name="symptom" value="sinus_pressure"> Sinus pressure</label>
+                <label><input type="checkbox" name="symptom" value="runny_nose"> Runny nose</label>
+                <label><input type="checkbox" name="symptom" value="congestion"> Congestion</label>
+                <label><input type="checkbox" name="symptom" value="chest_pain"> Chest pain</label>
+            </div>
+            <div class = "symptoms-box">
+                <h2>Musculoskeletal Symptoms</h2>
+                <label><input type="checkbox" name="symptom" value="weakness_in_limbs"> Weakness in limbs</label>
+                <label><input type="checkbox" name="symptom" value="fast_heart_rate"> Fast heart rate</label>
+                <label><input type="checkbox" name="symptom" value="pain_during_bowel_movements"> Pain during bowel movements</label>
+                <label><input type="checkbox" name="symptom" value="pain_in_anal_region"> Pain in anal region</label>
+                <label><input type="checkbox" name="symptom" value="bloody_stool"> Bloody stool</label>
+                <label><input type="checkbox" name="symptom" value="irritation_in_anus"> Irritation in anus</label>
+                <label><input type="checkbox" name="symptom" value="neck_pain"> Neck pain</label>
+                <label><input type="checkbox" name="symptom" value="dizziness"> Dizziness</label>
+                <label><input type="checkbox" name="symptom" value="cramps"> Cramps</label>
+                <label><input type="checkbox" name="symptom" value="bruising"> Bruising</label>
+                <label><input type="checkbox" name="symptom" value="obesity"> Obesity</label>
+                <label><input type="checkbox" name="symptom" value="swollen_legs"> Swollen legs</label>
+                <label><input type="checkbox" name="symptom" value="swollen_blood_vessels"> Swollen blood vessels</label>
+                <label><input type="checkbox" name="symptom" value="puffy_face_and_eyes"> Puffy face and eyes</label>
+                <label><input type="checkbox" name="symptom" value="enlarged_thyroid"> Enlarged thyroid</label>
+                <label><input type="checkbox" name="symptom" value="brittle_nails"> Brittle nails</label>
+                <label><input type="checkbox" name="symptom" value="swollen_extremeties"> Swollen extremities</label>
+                <label><input type="checkbox" name="symptom" value="excessive_hunger"> Excessive hunger</label>
+                <label><input type="checkbox" name="symptom" value="extra_marital_contacts"> Extra marital contacts</label>
+                <label><input type="checkbox" name="symptom" value="drying_and_tingling_lips"> Drying and tingling lips</label>
+                <label><input type="checkbox" name="symptom" value="slurred_speech"> Slurred speech</label>
+                <label><input type="checkbox" name="symptom" value="knee_pain"> Knee pain</label>
+                <label><input type="checkbox" name="symptom" value="hip_joint_pain"> Hip joint pain</label>
+                <label><input type="checkbox" name="symptom" value="muscle_weakness"> Muscle weakness</label>
+                <label><input type="checkbox" name="symptom" value="stiff_neck"> Stiff neck</label>
+                <label><input type="checkbox" name="symptom" value="swelling_joints"> Swelling joints</label>
+                <label><input type="checkbox" name="symptom" value="movement_stiffness"> Movement stiffness</label>
+                <label><input type="checkbox" name="symptom" value="spinning_movements"> Spinning movements</label>
+                <label><input type="checkbox" name="symptom" value="loss_of_balance"> Loss of balance</label>
+                <label><input type="checkbox" name="symptom" value="unsteadiness"> Unsteadiness</label>
+                <label><input type="checkbox" name="symptom" value="weakness_of_one_body_side"> Weakness of one body side</label>
+                <label><input type="checkbox" name="symptom" value="loss_of_smell"> Loss of smell</label>
+                <label><input type="checkbox" name="symptom" value="bladder_discomfort"> Bladder discomfort</label>
+                <label><input type="checkbox" name="symptom" value="foul_smell_of_urine"> Foul smell of urine</label>
+                <label><input type="checkbox" name="symptom" value="continuous_feel_of_urine"> Continuous feel of urine</label>
+                <label><input type="checkbox" name="symptom" value="passage_of_gases"> Passage of gases</label>
+                <label><input type="checkbox" name="symptom" value="internal_itching"> Internal itching</label>
+          
+            </div>
+            <div class="symptoms-box">
+                <h2>Other Symptoms</h2>
+                <label><input type="checkbox" name="symptom" value="toxic_look_(typhos)"> Toxic look (typhos)</label>
+                <label><input type="checkbox" name="symptom" value="depression"> Depression</label>
+                <label><input type="checkbox" name="symptom" value="irritability"> Irritability</label>
+                <label><input type="checkbox" name="symptom" value="muscle_pain"> Muscle pain</label>
+                <label><input type="checkbox" name="symptom" value="altered_sensorium"> Altered sensorium</label>
+                <label><input type="checkbox" name="symptom" value="red_spots_over_body"> Red spots over body</label>
+                <label><input type="checkbox" name="symptom" value="belly_pain"> Belly pain</label>
+                <label><input type="checkbox" name="symptom" value="abnormal_menstruation"> Abnormal menstruation</label>
+                <label><input type="checkbox" name="symptom" value="dischromic_patches"> Dischromic patches</label>
+                <label><input type="checkbox" name="symptom" value="watering_from_eyes"> Watering from eyes</label>
+                <label><input type="checkbox" name="symptom" value="increased_appetite"> Increased appetite</label>
+                <label><input type="checkbox" name="symptom" value="polyuria"> Polyuria</label>
+                <label><input type="checkbox" name="symptom" value="family_history"> Family history</label>
+                <label><input type="checkbox" name="symptom" value="mucoid_sputum"> Mucoid sputum</label>
+                <label><input type="checkbox" name="symptom" value="rusty_sputum"> Rusty sputum</label>
+                <label><input type="checkbox" name="symptom" value="lack_of_concentration"> Lack of concentration</label>
+                <label><input type="checkbox" name="symptom" value="visual_disturbances"> Visual disturbances</label>
+                <label><input type="checkbox" name="symptom" value="receiving_blood_transfusion"> Receiving blood transfusion</label>
+                <label><input type="checkbox" name="symptom" value="receiving_unsterile_injections"> Receiving unsterile injections</label>
+                <label><input type="checkbox" name="symptom" value="coma"> Coma</label>
+                <label><input type="checkbox" name="symptom" value="stomach_bleeding"> Stomach bleeding</label>
+                <label><input type="checkbox" name="symptom" value="distention_of_abdomen"> Distention of abdomen</label>
+                <label><input type="checkbox" name="symptom" value="history_of_alcohol_consumption"> History of alcohol consumption</label>
+                <label><input type="checkbox" name="symptom" value="fluid_overload"> Fluid overload</label>
+                <label><input type="checkbox" name="symptom" value="blood_in_sputum"> Blood in sputum</label>
+                <label><input type="checkbox" name="symptom" value="prominent_veins_on_calf"> Prominent veins on calf</label>
+                <label><input type="checkbox" name="symptom" value="palpitations"> Palpitations</label>
+                <label><input type="checkbox" name="symptom" value="painful_walking"> Painful walking</label>
+                <label><input type="checkbox" name="symptom" value="pus_filled_pimples"> Pus-filled pimples</label>
+                <label><input type="checkbox" name="symptom" value="blackheads"> Blackheads</label>
+                <label><input type="checkbox" name="symptom" value="scurring"> Scurring</label>
+                <label><input type="checkbox" name="symptom" value="skin_peeling"> Skin peeling</label>
+                <label><input type="checkbox" name="symptom" value="silver_like_dusting"> Silver-like dusting</label>
+                <label><input type="checkbox" name="symptom" value="small_dents_in_nails"> Small dents in nails</label>
+                <label><input type="checkbox" name="symptom" value="inflammatory_nails"> Inflammatory nails</label>
+                <label><input type="checkbox" name="symptom" value="blister"> Blister</label>
+                <label><input type="checkbox" name="symptom" value="red_sore_around_nose"> Red sore around nose</label>
+                <label><input type="checkbox" name="symptom" value="yellow_crust_ooze"> Yellow crust ooze</label>
+            </div>
+        </div>
+        <button type="submit" class="btn-submit">Submit</button>
+    </form>
+</div>
+<script>
+    document.getElementById("symptom-form").addEventListener('submit' , (event) => {
+        event.preventDefault();
+        console.log(event);
+    })
+</script>
+</body>
+</html>
