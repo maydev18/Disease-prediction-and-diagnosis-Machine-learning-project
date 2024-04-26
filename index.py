@@ -5,8 +5,9 @@ import pandas as pd
 import numpy as np
 import pickle
 import ast
+from flask_cors import CORS , cross_origin
 app = Flask(__name__)
-
+CORS(app , support_credentials=True)
 #loading the database
 symptoms_description = pd.read_csv("datasets/symtoms_df.csv")
 precautions = pd.read_csv("datasets/precautions_df.csv")
@@ -49,6 +50,7 @@ def get_predicted_value(patient_symptoms):
 #routes
 
 @app.route('/predict' , methods = ['POST'])
+@cross_origin(supports_credentials=True)
 def predict():
     json_data = request.json
     symptoms = []
