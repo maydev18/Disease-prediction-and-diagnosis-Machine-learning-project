@@ -8,6 +8,7 @@
     "symptoms" : ["cold_hands_and_feets", "restlessness"]   
 }    
 - Live link - https://frontend-qthe.onrender.com/
+- project description - https://drive.google.com/file/d/1hldT-Wxm8ChJzcwogir873e8BccIP-H2/view
 
 
 
