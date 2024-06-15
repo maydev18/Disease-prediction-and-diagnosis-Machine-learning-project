@@ -6,8 +6,8 @@
 - Sample body for api-   
 {   
     "symptoms" : ["cold_hands_and_feets", "restlessness"]   
-}   
-
+}    
+- Live link - https://frontend-qthe.onrender.com/
 
 
 
